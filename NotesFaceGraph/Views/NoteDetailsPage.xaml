@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="NotesFaceGraph.Views.NoteDetailsPage"
+             Title="Details">
+    <StackLayout>
+        <TableView Intent="Settings" HasUnevenRows="true">
+               <TableRoot>
+                   <TableSection>
+                        <EntryCell Label="Title" Text="{Binding Title, Mode=TwoWay}"/>
+                        <EntryCell Label="Description" Text="{Binding Description, Mode=TwoWay}"/>
+                        <ViewCell>
+                            <StackLayout>
+                                <Picker ItemsSource="{Binding Statuses}" SelectedItem="{Binding SelectedStatus, Mode=TwoWay}" />
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid BackgroundColor="Silver">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TakeImageCommand}"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="200"/>
+                                </Grid.RowDefinitions>
+                            
+                                <Label HorizontalOptions="Center" VerticalOptions="Center" 
+                                       IsVisible="{Binding Source={x:Reference NoteImage}, Path=IsVisible,
+                                       Converter={StaticResource BoolInversionConverter}}"
+                                       Text="Tap to take an image"/>
+                            
+                                <Image x:Name="NoteImage" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill"
+                                       IsVisible="{Binding Image, Converter={StaticResource NullOrEmptyConverter}}">
+                                    <Image.Source>
+                                        <FileImageSource File="{Binding Image, Mode=TwoWay}" />
+                                    </Image.Source>
+                                </Image>
+                            </Grid>
+                        </ViewCell>
+                   </TableSection>
+                <TableSection>
+                    
+                </TableSection>
+               </TableRoot>
+        </TableView>
+        
+        <Button Text="Save" Command="{Binding SaveCommand}"/>
+    </StackLayout>
+</ContentPage>

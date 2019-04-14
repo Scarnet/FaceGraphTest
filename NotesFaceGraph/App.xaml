@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms" 
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                        x:Class="NotesFaceGraph.App" 
+                        xmlns:prism="clr-namespace:Prism.Autofac;assembly=Prism.Autofac.Froms" 
+                        xmlns:converters="clr-namespace:NotesFaceGraph.Converters">
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:BytesToBoolConverter x:Key="BytesToBoolConverter" />
+            <converters:BoolInvertionConverter x:Key="BoolInversionConverter"/>
+            <converters:BytesToImageSourceConverter x:Key="BytesToImageSourceConverter"/>
+            <converters:NullOrEmptyConverter x:Key="NullOrEmptyConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

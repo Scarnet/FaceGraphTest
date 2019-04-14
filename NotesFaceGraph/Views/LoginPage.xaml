@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="NotesFaceGraph.Views.LoginPage">
+  
+  <StackLayout Padding="10">
+      <TableView Intent="Form" Margin="0, 100, 0, 0">
+            <TableRoot>
+                <TableSection>
+                    <EntryCell Label="User name" Text="{Binding UserName, Mode=OneWayToSource}" />
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Password" Margin="13" />
+                            <Entry Margin="0, 0, 0, 5" IsPassword="true" Text="{Binding Password, Mode=OneWayToSource}" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="Login" Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand"/>
+                            <Button Text="Create new user" Command="{Binding CreateNewUserCommand}" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+  </StackLayout>
+</ContentPage>
